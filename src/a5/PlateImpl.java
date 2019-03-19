@@ -8,9 +8,7 @@ public class PlateImpl implements Plate {
 	
 	protected PlateImpl(Sushi contents, double price, Plate.Color color) throws PlatePriceException {
 		
-		if (contents == null) {
-			this.content = null;
-		} else if (contents.getCost() >= this.price) {
+		if ((contents!= null) && (contents.getCost() > this.price)) {
 			throw new PlatePriceException();
 		}
 		
