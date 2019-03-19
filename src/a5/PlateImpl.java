@@ -2,9 +2,22 @@ package a5;
 
 public class PlateImpl implements Plate {
 	
-	protected Sushi content = null;
-	protected double price = 0.0;
-	protected Color color;
+	private Sushi content;
+	private double price;
+	private Color color;
+	
+	protected PlateImpl(Sushi contents, double price, Plate.Color color) throws PlatePriceException {
+		
+		if (contents == null) {
+			this.content = null;
+		} else if (contents.getCost() >= this.price) {
+			throw new PlatePriceException();
+		}
+		
+		this.content = contents;
+		this.color = color;
+		this.price = price;
+	}
 
 	@Override
 	public Sushi getContents() {
